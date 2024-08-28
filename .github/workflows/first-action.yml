@@ -1,17 +1,10 @@
 name: First Workflow
 on: workflow_dispatch
 jobs: 
-  deploy:
+  first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2 instance
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            docker stop foodapp || true
-            docker rm foodapp || true
-            docker pull gaveenbuddhika/foodapp:latest
-            docker run -d -p 80:80 --name foodapp gaveenbuddhika/foodapp:latest
+      - name: print greeting
+        run: echo "hello world!"
+      - name: print goodbye
+        run: echo "Done-bye!!"
